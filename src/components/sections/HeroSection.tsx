@@ -130,12 +130,7 @@ export default function HeroSection() {
                   </p>
 
                   <p>
-                    I'm currently pursuing a{" "}
-                    <span className="font-semibold text-blue-600">
-                      Master of Engineering in Software Engineering
-                    </span>{" "}
-                    at Northwestern Polytechnical University, Xi'an, focusing on
-                    UAV Path Planning for Hybrid Air–Ground Navigation Systems.
+                   
                     I completed my Bachelor of Engineering in Software
                     Engineering from Sichuan University, Chengdu, where I
                     achieved a CGPA of 3.71/4.00 (88%) and earned the top
