@@ -4,6 +4,7 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import PublicationsSection from "@/components/sections/PublicationsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import Achievements from "../components/sections/achivements";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <ExperienceSection />
       <PublicationsSection />
       <ProjectsSection />
+      <Achievements />
       <ContactSection />
     </div>
   );
