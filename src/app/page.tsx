@@ -4,7 +4,7 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import PublicationsSection from "@/components/sections/PublicationsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ContactSection from "@/components/sections/ContactSection";
-import Achievements from "../components/sections/achivements";
+import Achievements from "@/components/sections/Achievements";
 
 export default function Home() {
   return (
