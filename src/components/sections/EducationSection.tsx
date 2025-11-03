@@ -5,30 +5,7 @@ import Image from "next/image";
 import { MapPin, Calendar, Award, Star, FileText } from "lucide-react";
 
 const educationData = [
-  {
-    id: "nwpu",
-    title: "Northwestern Polytechnical University",
-    period: "Sep 2025 – Mar 2028 (Expected)",
-    location: "Xi'an, China",
-    type: "Master's Degree",
-    logo: "/images/nwpu-logo.png",
-    degree: "Master of Engineering in Software Engineering",
-    achievements: [
-      {
-        icon: FileText,
-        text: "Current Research: UAV Path Planning for Hybrid Air–Ground Navigation Systems",
-      },
-      {
-        icon: Award,
-        text: "Xi'an City 'Belt and Road' International Students Scholarship – First Prize",
-      },
-      {
-        icon: Star,
-        text: "Full tuition, accommodation, and 2000 RMB/month stipend for 12 months",
-      },
-    ],
-  },
-  {
+    {
     id: "scu",
     title: "Sichuan University",
     period: "Sep 2021 – June 2025",
@@ -51,6 +28,54 @@ const educationData = [
       },
     ],
   },
+  {
+    id: "hsc",
+    title: "Government Science College",
+    period: "2017 – 2019",
+    location: "Dhaka, Bangladesh",
+    type: "Higher Secondary Certificate (HSC)",
+    logo: "/images/gsc-logo.png",
+    achievements: [
+      { icon: Star, text: "GPA: 5.00/5.00" },
+      {
+        icon: Award,
+        text: "Group: Science",
+      },
+      {
+        icon: FileText,
+        text: "Roll No: 13 18 91 | Registration: 1410680397/2017-18",
+      },
+      {
+        icon: Award,
+        text: "Outstanding grades in Physics (A+), Chemistry (A+), Higher Mathematics (A+), and ICT (A+)",
+      },
+    ],
+  },
+  {
+    id: "ssc",
+    title: "Police Lines Adarsha High School",
+    period: "2015 – 2017",
+    location: "Tangail, Bangladesh",
+    type: "Secondary School Certificate (SSC)",
+    logo: "/images/plahst-logo.png",
+    achievements: [
+      { icon: Star, text: "GPA: 5.00/5.00" },
+      {
+        icon: Award,
+        text: "Group: Science",
+      },
+      {
+        icon: FileText,
+        text: "Roll No: 14 95 56 | Registration: 1410680397/2015",
+      },
+      {
+        icon: Award,
+        text: "Excellent performance in Science subjects with A+ grades",
+      },
+    ],
+  },
+  
+
 ];
 
 export default function EducationSection() {
@@ -130,15 +155,10 @@ export default function EducationSection() {
                           </>
                         )}
                       </div>
-                      {/* Degree title */}
-                      {education.degree && (
+                      {/* Degree/Certification title */}
+                      {education.type && (
                         <em className="text-muted-foreground text-sm block mt-2">
-                          {education.degree}
-                        </em>
-                      )}
-                      {education.id === "scu" && (
-                        <em className="text-muted-foreground text-sm block mt-2">
-                          Bachelor of Engineering in Software Engineering
+                          {education.type}
                         </em>
                       )}
                     </div>

@@ -217,7 +217,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
 
                   {/* Project Links */}
                   <div className="flex flex-nowrap gap-2">
-                    {/* {currentProject.links.github && (
+                    {currentProject.links.github && (
                       <motion.a
                         href={currentProject.links.github}
                         target="_blank"
@@ -229,7 +229,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                         <Github className="h-4 w-4" />
                         <span>GitHub</span>
                       </motion.a>
-                    )} */}
+                    )}
                     {currentProject.links.demo && (
                       <motion.a
                         href={currentProject.links.demo}

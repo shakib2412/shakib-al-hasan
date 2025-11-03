@@ -20,14 +20,12 @@ const projectsData = [
     category: "NLP, Deep Learning, BERT, Mental Health",
     status: "Completed",
     description:
-      "Developed a BERT-based NLP system for suicidal ideation detection on 232k Reddit posts, achieving 97.63% F1-score and outperforming 10 alternative models. This project demonstrates the power of transformer-based architectures in addressing critical mental health challenges through automated social media analysis.",
+      "Developed a BERT-based NLP system for suicidal ideation detection on 232k Reddit posts, achieving 97.63% F1-score and outperforming 10 alternative models.",
     technologies: [
       "Python",
       "PyTorch",
       "Hugging Face",
       "Scikit-learn",
-      "BERT",
-      "NLP",
       "Kaggle",
     ],
     achievements: [
@@ -37,7 +35,7 @@ const projectsData = [
       "Contributed to mental health research by developing automated detection system for early intervention in suicidal behavior",
     ],
     links: {
-      github: "https://github.com/shakibalhasan/suicidal-ideation-detection",
+      github: "https://github.com/shakib2412/suicidal-ideation-detection-transformers",
     },
     icon: Brain,
     color: "from-purple-500 to-pink-600",
@@ -50,15 +48,13 @@ const projectsData = [
     category: "Big Data, PySpark, Web Development, ML",
     status: "Completed",
     description:
-      "Built a comprehensive web application to analyze Yelp data and provide personalized recommendations. The system leverages big data technologies to process large-scale datasets and generate intelligent recommendations based on user preferences and business analytics.",
+      "Built a web application to analyze Yelp data and provide personalized recommendations.",
     technologies: [
       "PySpark",
       "Python",
       "Apache Zeppelin",
       "HTML/CSS",
       "Linux",
-      "Big Data Analytics",
-      "Machine Learning",
     ],
     achievements: [
       "Developed end-to-end big data pipeline using PySpark for processing and analyzing large-scale Yelp dataset",
@@ -67,7 +63,7 @@ const projectsData = [
       "Applied machine learning algorithms for sentiment analysis and collaborative filtering to enhance recommendation accuracy",
     ],
     links: {
-      github: "https://github.com/shakib2412/big-data-recommendation",
+      github: "https://github.com/shakib2412/Yelp-Data-Visualization",
     },
     icon: Database,
     color: "from-blue-500 to-indigo-600",
@@ -80,7 +76,7 @@ const projectsData = [
     category: "Database Management, Python, Data Visualization",
     status: "Completed",
     description:
-      "Developed a Python-SQLite system to streamline student data management at Sichuan University. The system provides efficient data storage, retrieval, and visualization capabilities for managing student records, grades, and academic information.",
+      "Developed a Python-SQLite system to streamline student data management at Sichuan University.",
     technologies: [
       "Python",
       "SQLite",
@@ -95,7 +91,7 @@ const projectsData = [
       "Created data visualization dashboards using Matplotlib for academic performance tracking and reporting",
     ],
     links: {
-      github: "https://github.com/shakib2412/student-management-system",
+      github: "https://github.com/shakib2412/student-info-system",
     },
     icon: Code,
     color: "from-green-500 to-emerald-600",
@@ -108,8 +104,8 @@ const projectsData = [
     category: "Game Development, AI, Python, Pygame",
     status: "Completed",
     description:
-      "Created a tactical 2D shooter game with AI-driven enemies and strategic gameplay. The game features intelligent enemy behavior, multiple weapon systems, and engaging combat mechanics built entirely with Python and Pygame.",
-    technologies: ["Python", "Pygame", "Game AI", "Computer Graphics"],
+      "Created a tactical 2D shooter game with AI-driven enemies and strategic gameplay.",
+    technologies: ["Python", "Pygame", "Game AI"],
     achievements: [
       "Developed complete 2D game engine with physics simulation, collision detection, and sprite animation systems",
       "Implemented AI-driven enemy behavior using pathfinding algorithms and state machines for tactical gameplay",
@@ -117,7 +113,7 @@ const projectsData = [
       "Created engaging level designs with strategic cover points, spawn systems, and difficulty progression",
     ],
     links: {
-      github: "https://github.com/shakib2412/soldier-of-fortune",
+      github: "https://github.com/shakib2412/Soldier-of-Fortune-Game",
     },
     icon: Gamepad2,
     color: "from-orange-500 to-red-600",
@@ -130,7 +126,7 @@ const projectsData = [
     category: "Computer Graphics, OpenGL, 3D Animation, C++",
     status: "Completed",
     description:
-      "Developed an interactive 3D puppet with hierarchical modeling and custom animations using OpenGL. The system demonstrates advanced computer graphics techniques including skeletal animation, transformations, and real-time rendering.",
+      "Developed an interactive 3D puppet with hierarchical modeling and custom animations using OpenGL.",
     technologies: ["OpenGL", "C++", "GLUT", "Computer Graphics", "3D Modeling"],
     achievements: [
       "Implemented hierarchical 3D model structure with parent-child joint relationships for realistic puppet movement",
@@ -139,7 +135,7 @@ const projectsData = [
       "Applied advanced OpenGL techniques including lighting, shading, and texture mapping for visual quality",
     ],
     links: {
-      github: "https://github.com/shakib2412/3d-puppet-animation",
+      github: "https://github.com/shakib2412/Interactive-Hierarchical-Modeling---OpenGL-Puppet",
     },
     icon: Box,
     color: "from-cyan-500 to-blue-600",
@@ -185,7 +181,7 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
         >
           <motion.a
-            href="https://github.com/shakibalhasan?tab=repositories"
+            href="https://github.com/shakib2412?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary flex items-center gap-2 mx-auto w-fit"
