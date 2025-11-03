@@ -132,7 +132,7 @@ const certificationsData = [
   },
 ];
 
-export default function AwardsActivitiesSection() {
+export default function Achievements() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
