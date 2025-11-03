@@ -130,7 +130,6 @@ export default function HeroSection() {
                   </p>
 
                   <p>
-                   
                     I completed my Bachelor of Engineering in Software
                     Engineering from Sichuan University, Chengdu, where I
                     achieved a CGPA of 3.71/4.00 (88%) and earned the top
