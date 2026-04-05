@@ -73,10 +73,18 @@ const skills = [
 
 export default function AboutSection() {
   const handleDownloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/resume/resume_shakib.pdf";
-    link.download = "resume_shakib.pdf";
-    link.click();
+    try {
+      const link = document.createElement("a");
+      link.href = "/resume/resume_shakib.pdf";
+      link.download = "resume_shakib.pdf";
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      // Fallback: open in new tab
+      window.open("/resume/resume_shakib.pdf", "_blank");
+    }
   };
 
   const containerVariants = {
