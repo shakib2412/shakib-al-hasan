@@ -1,16 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Download,
   Github,
   Linkedin,
   Mail,
-  Brain,
-  Network,
-  Database,
-  Zap,
-  Eye,
   Sparkles,
 } from "lucide-react";
 
@@ -24,7 +20,7 @@ export default function HeroSection() {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } catch (error) {
+    } catch {
       // Fallback: open in new tab
       window.open("/resume/resume_shakib.pdf", "_blank");
     }
@@ -46,54 +42,6 @@ export default function HeroSection() {
     visible: { y: 0, opacity: 1 },
   };
 
-  const profileVariants = {
-    hidden: { scale: 0.95, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 150,
-        damping: 30,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const floatingVariants = {
-    float: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut" as const,
-      },
-    },
-    floatReverse: {
-      y: [0, 10, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut" as const,
-        delay: 3,
-      },
-    },
-  };
-
-  const researchInterests = [
-    {
-      icon: Sparkles,
-      text: "NLP & Transformers",
-      color: "from-purple-500 to-pink-500",
-    },
-    { icon: Brain, text: "Deep Learning", color: "from-blue-500 to-cyan-500" },
-    {
-      icon: Database,
-      text: "Big Data Analytics",
-      color: "from-orange-500 to-red-500",
-    },
-  ];
-
   return (
     <section
       id="about"
@@ -112,7 +60,7 @@ export default function HeroSection() {
             <motion.div variants={itemVariants} className="mb-8">
               <div className="space-y-6">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-                  Hi, I'm{" "}
+                  Hi, I&apos;m{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                     SHAKIB AL HASAN
                   </span>{" "}
@@ -121,7 +69,7 @@ export default function HeroSection() {
 
                 <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
                   <p>
-                    I'm an AI and Data Science enthusiast specializing in{" "}
+                    I&apos;m an AI and Data Science enthusiast specializing in{" "}
                     <span className="font-semibold text-blue-600">
                       Natural Language Processing
                     </span>
@@ -177,7 +125,7 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Mail className="h-5 w-5" />
-                Let's Connect
+                Let&apos;s Connect
               </motion.button>
             </motion.div>
 
@@ -230,10 +178,13 @@ export default function HeroSection() {
             <div className="relative z-10">
               {/* Profile Image - Square */}
               <div className="relative w-80 h-80 sm:w-96 sm:h-96 rounded-lg overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl hover:border-blue-300 dark:hover:border-blue-600">
-                <img
+                <Image
                   src="/images/profile_picture.jpeg"
-                  alt="Shakib Al Hasan - AI Researcher & Data Scientist"
-                  className="w-full h-full object-cover object-bottom transition-transform duration-300 hover:scale-110"
+                  alt="Shakib Al Hasan - AI & Data Science"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 320px, 384px"
+                  className="object-cover object-bottom transition-transform duration-300 hover:scale-110"
                 />
               </div>
             </div>

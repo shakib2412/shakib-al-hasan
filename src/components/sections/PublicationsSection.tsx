@@ -7,7 +7,6 @@ import {
   ExternalLink,
   Users,
   Code,
-  Brain,
   Award,
   Eye,
   ChevronDown,
@@ -79,6 +78,19 @@ export default function PublicationsSection() {
     setExpandedPublication(expandedPublication === id ? null : id);
   };
 
+  const getStatusBadgeClasses = (status: string) => {
+    const normalized = status.toLowerCase();
+
+    if (normalized.includes("published")) {
+      return "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20";
+    }
+    if (normalized.includes("review") || normalized.includes("submitted")) {
+      return "bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20";
+    }
+
+    return "bg-secondary text-secondary-foreground border border-border";
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -96,7 +108,15 @@ export default function PublicationsSection() {
   };
 
   return (
-    <section id="publications" className="py-20 lg:py-32">
+    <section
+      id="publications"
+      className="relative overflow-hidden py-20 lg:py-32 bg-gradient-to-b from-background to-secondary/20"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl" />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -131,33 +151,37 @@ export default function PublicationsSection() {
                 variants={itemVariants}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="card-modern rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="publication-content">
                     {/* Publication Header */}
                     <div className="mb-6">
                       {/* Status Badge */}
                       <div className="mb-3">
-                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                        <span
+                          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${getStatusBadgeClasses(
+                            publication.status
+                          )}`}
+                        >
                           <FileText className="h-3 w-3" />
                           {publication.status}
                         </span>
                       </div>
 
-                      <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3 flex items-start gap-3">
-                        <Icon className="h-7 w-7 text-blue-600 flex-shrink-0 mt-1" />
+                      <h2 className="text-2xl font-semibold text-foreground mb-3 flex items-start gap-3">
+                        <Icon className="h-7 w-7 text-primary flex-shrink-0 mt-1" />
                         <span>{publication.title}</span>
                       </h2>
 
                       {/* Authors */}
                       <div className="flex items-center gap-2 mb-3">
-                        <Users className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">
+                        <Users className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-muted-foreground font-medium">
                           {publication.authors}
                         </span>
                       </div>
 
                       {/* Conference Details */}
-                      <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                      <div className="space-y-2 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
                           <Award className="h-4 w-4" />
                           <span>{publication.conference}</span>
@@ -165,9 +189,9 @@ export default function PublicationsSection() {
                         <div className="flex flex-wrap items-center gap-2">
                           <Calendar className="h-4 w-4" />
                           <span>{publication.year}</span>
-                          <span className="text-gray-400">|</span>
+                          <span className="text-muted-foreground/60">|</span>
                           <span>{publication.location}</span>
-                          <span className="text-gray-400">|</span>
+                          <span className="text-muted-foreground/60">|</span>
                           <span>{publication.pages}</span>
                         </div>
                       </div>
@@ -175,7 +199,7 @@ export default function PublicationsSection() {
 
                     {/* Description */}
                     <div className="mb-6">
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      <p className="text-muted-foreground leading-relaxed">
                         {publication.description}
                       </p>
                     </div>
@@ -187,7 +211,7 @@ export default function PublicationsSection() {
                           href={publication.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors text-sm font-medium"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-purple-600 text-primary-foreground rounded-lg hover:opacity-95 transition-opacity text-sm font-medium"
                         >
                           <ExternalLink className="h-4 w-4" />
                           View Paper
@@ -195,7 +219,7 @@ export default function PublicationsSection() {
                       )}
                       <button
                         onClick={() => togglePublication(publication.id)}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/70 text-secondary-foreground border border-border rounded-lg hover:bg-secondary transition-colors text-sm font-medium"
                       >
                         <Eye className="h-4 w-4" />
                         {isExpanded ? "Hide Details" : "Show Details"}
@@ -210,10 +234,10 @@ export default function PublicationsSection() {
                     {/* DOI Badge */}
                     {publication.doi && (
                       <div className="mb-6 text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">
+                        <span className="text-muted-foreground">
                           DOI:{" "}
                         </span>
-                        <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-gray-100 font-mono">
+                        <code className="bg-secondary/60 border border-border px-2 py-1 rounded text-foreground font-mono">
                           {publication.doi}
                         </code>
                       </div>
@@ -226,30 +250,30 @@ export default function PublicationsSection() {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="border-t border-gray-200 dark:border-gray-700 pt-6"
+                        className="border-t border-border pt-6"
                       >
                         {/* Abstract */}
                         <div className="mb-6">
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                            <FileText className="h-5 w-5 text-blue-600" />
+                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <FileText className="h-5 w-5 text-primary" />
                             Abstract
                           </h4>
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                          <p className="text-muted-foreground leading-relaxed text-sm">
                             {publication.abstract}
                           </p>
                         </div>
 
                         {/* Research Areas */}
                         <div className="mb-6">
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                            <Code className="h-5 w-5 text-blue-600" />
+                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <Code className="h-5 w-5 text-primary" />
                             Research Areas
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {publication.technologies.map((tech) => (
                               <span
                                 key={tech}
-                                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium rounded-lg"
+                                className="px-3 py-1 bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium rounded-lg border border-primary/20"
                               >
                                 {tech}
                               </span>

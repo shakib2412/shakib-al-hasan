@@ -19,10 +19,6 @@ const educationData = [
         text: "Xi'an City 'Belt and Road' International Students Scholarship - First Prize",
       },
       {
-        icon: FileText,
-        text: "Full tuition + accommodation + 2000 RMB/month stipend (12 months)",
-      },
-      {
         icon: Award,
         text: "Currently enrolled, open to exploring research and academic opportunities",
       },
@@ -119,7 +115,14 @@ export default function EducationSection() {
   };
 
   return (
-    <section id="education" className="py-20 lg:py-32">
+    <section
+      id="education"
+      className="relative overflow-hidden py-20 lg:py-32 bg-gradient-to-b from-background to-secondary/10"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

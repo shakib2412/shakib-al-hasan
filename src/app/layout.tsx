@@ -26,9 +26,9 @@ const firaCode = Fira_Code({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shakibulhasan.vercel.app"),
-  title: "SHAKIB AL HASAN | Data Scientist & AI Engineer",
+  title: "SHAKIB AL HASAN | AI & Data Science",
   description:
-    "Portfolio of SHAKIB AL HASAN - Data Scientist, AI Engineer, and ML Expert. Explore my journey, projects, and expertise in machine learning, deep learning, and artificial intelligence.",
+    "Portfolio of SHAKIB AL HASAN. Explore my projects, research, and experience in AI and data science.",
   keywords: [
     "SHAKIB AL HASAN",
     "Data Scientist",
@@ -36,8 +36,6 @@ export const metadata: Metadata = {
     "Machine Learning",
     "Deep Learning",
     "Portfolio",
-    "BDMA",
-    "Erasmus Mundus",
     "Big Data Analytics",
     "NLP",
     "LLMs",
@@ -51,25 +49,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://mdkamrulislam.vercel.app",
+    url: "https://shakibulhasan.vercel.app",
     siteName: "SHAKIB AL HASAN Portfolio",
-    title: "SHAKIB AL HASAN | Data Scientist & AI Engineer",
+    title: "SHAKIB AL HASAN | AI & Data Science",
     description:
-      "Explore the portfolio of SHAKIB AL HASAN, featuring cutting-edge projects in AI, ML, and data science. Specializing in Big Data Analytics, NLP, LLMs, and Knowledge Graphs.",
+      "Explore the portfolio of SHAKIB AL HASAN, featuring projects and research in AI and data science.",
     images: [
       {
         url: "/images/profile_picture.png",
         width: 1200,
         height: 630,
-        alt: "SHAKIB AL HASAN - Data Scientist & AI Engineer",
+        alt: "SHAKIB AL HASAN - AI & Data Science",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SHAKIB AL HASAN | Data Scientist & AI Engineer",
+    title: "SHAKIB AL HASAN | AI & Data Science",
     description:
-      "Explore the portfolio of SHAKIB AL HASAN, featuring cutting-edge projects in AI, ML, and data science. Specializing in Big Data Analytics, NLP, LLMs, and Knowledge Graphs.",
+      "Explore the portfolio of SHAKIB AL HASAN, featuring projects and research in AI and data science.",
     images: ["/images/profile_picture.png"],
   },
   robots: {

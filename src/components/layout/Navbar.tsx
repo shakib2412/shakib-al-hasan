@@ -47,7 +47,7 @@ export default function Navbar() {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } catch (error) {
+    } catch {
       // Fallback: open in new tab
       window.open("/resume/resume_shakib.pdf", "_blank");
     }

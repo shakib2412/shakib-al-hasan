@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import {
   Github,
   Database,
-  TrendingUp,
   Brain,
   Code,
   Gamepad2,

@@ -81,7 +81,7 @@ export default function AboutSection() {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } catch (error) {
+    } catch {
       // Fallback: open in new tab
       window.open("/resume/resume_shakib.pdf", "_blank");
     }
@@ -140,7 +140,7 @@ export default function AboutSection() {
 
             <motion.div variants={itemVariants} className="space-y-6">
               <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                I'm interested in{" "}
+                I&apos;m interested in{" "}
                 <span className="text-blue-600 font-semibold">
                   Artificial Intelligence
                 </span>

@@ -13,7 +13,6 @@ import {
   Instagram,
   Twitter,
   CheckCircle,
-  AlertCircle,
 } from "lucide-react";
 import { Copy } from "lucide-react";
 

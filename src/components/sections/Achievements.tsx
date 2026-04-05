@@ -160,7 +160,14 @@ export default function Achievements() {
   };
 
   return (
-    <section id="awards-activities" className="py-20 lg:py-32">
+    <section
+      id="awards-activities"
+      className="relative overflow-hidden py-20 lg:py-32 bg-gradient-to-b from-background to-secondary/10"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl" />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Section Header */}
         <motion.div
