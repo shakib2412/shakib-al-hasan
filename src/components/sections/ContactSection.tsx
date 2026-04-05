@@ -15,12 +15,7 @@ import {
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
-import emailjs from "@emailjs/browser";
-
-// Initialize EmailJS
-if (typeof window !== "undefined") {
-  emailjs.init("XgCU3bhNm2eeYbgBv");
-}
+import { Copy } from "lucide-react";
 
 const contactInfo = [
   {
@@ -119,31 +114,25 @@ export default function ContactSection() {
       return;
     }
 
-    setStatus({ type: "loading", message: "Sending message..." });
+    // Create mailto link
+    const subject = `Message from ${formData.name}`;
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    const mailtoLink = `mailto:100shakibalhasan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     try {
-      // Send email using EmailJS
-      await emailjs.send(
-        "service_5ebrshb", // Your EmailJS service ID
-        "template_a2epgcl", // Your EmailJS template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-        }
-      );
-
+      // Open email client with pre-filled message
+      window.location.href = mailtoLink;
+      
       setStatus({
         type: "success",
-        message: "Message sent successfully! I'll get back to you soon.",
+        message: "Opening your email client... Please send the email to confirm your message.",
       });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS error:", error);
+      console.error("Error:", error);
       setStatus({
         type: "error",
-        message:
-          "Failed to send message. Please email me directly at 100shakibalhasan@gmail.com",
+        message: "Please email me directly at 100shakibalhasan@gmail.com",
       });
     }
 
