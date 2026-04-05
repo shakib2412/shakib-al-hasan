@@ -39,10 +39,18 @@ export default function Navbar() {
   };
 
   const handleDownloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/resume/shakib_resume.pdf";
-    link.download = "shakib_resume.pdf";
-    link.click();
+    try {
+      const link = document.createElement("a");
+      link.href = "/resume/resume_shakib.pdf";
+      link.download = "resume_shakib.pdf";
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      // Fallback: open in new tab
+      window.open("/resume/resume_shakib.pdf", "_blank");
+    }
   };
 
   return (

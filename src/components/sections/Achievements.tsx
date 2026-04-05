@@ -38,6 +38,16 @@ const awardsData = [
 
 const activitiesData = [
   {
+    id: "culture-bridge-gala",
+    title: "Excellent Performer, Culture Bridge New Year Gala",
+    organization: "Northwestern Polytechnical University",
+    period: "Dec 2025",
+    description:
+      "Recognized for performing and contributing to the Cultural Bridge New Year Gala at Northwestern Polytechnical University.",
+    icon: Trophy,
+    color: "from-yellow-500 to-amber-600",
+  },
+  {
     id: "aspire-leaders",
     title: "Aspire Leaders Program",
     organization: "Harvard/Aspire Institute",

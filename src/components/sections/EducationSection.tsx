@@ -5,6 +5,29 @@ import Image from "next/image";
 import { MapPin, Calendar, Award, Star, FileText } from "lucide-react";
 
 const educationData = [
+  {
+    id: "npu",
+    title: "Northwestern Polytechnical University",
+    period: "Sep 2025 – Mar 2028",
+    location: "Xi'an, China",
+    type: "Master's Degree",
+    logo: "/images/nwpu-logo.png",
+    achievements: [
+      { icon: Star, text: "Master's in Software Engineering" },
+      {
+        icon: Award,
+        text: "Xi'an City 'Belt and Road' International Students Scholarship - First Prize",
+      },
+      {
+        icon: FileText,
+        text: "Full tuition + accommodation + 2000 RMB/month stipend (12 months)",
+      },
+      {
+        icon: Award,
+        text: "Currently enrolled, open to exploring research and academic opportunities",
+      },
+    ],
+  },
     {
     id: "scu",
     title: "Sichuan University",

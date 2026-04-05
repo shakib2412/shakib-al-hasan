@@ -74,72 +74,14 @@ const socialLinks = [
   },
 ];
 
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-interface FormStatus {
-  type: "idle" | "loading" | "success" | "error";
-  message: string;
-}
-
 export default function ContactSection() {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<FormStatus>({
-    type: "idle",
-    message: "",
-  });
+  const [copied, setCopied] = useState(false);
+  const email = "100shakibalhasan@gmail.com";
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus({
-        type: "error",
-        message: "Please fill in all required fields.",
-      });
-      return;
-    }
-
-    // Create mailto link
-    const subject = `Message from ${formData.name}`;
-    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-    const mailtoLink = `mailto:100shakibalhasan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    try {
-      // Open email client with pre-filled message
-      window.location.href = mailtoLink;
-      
-      setStatus({
-        type: "success",
-        message: "Opening your email client... Please send the email to confirm your message.",
-      });
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error("Error:", error);
-      setStatus({
-        type: "error",
-        message: "Please email me directly at 100shakibalhasan@gmail.com",
-      });
-    }
-
-    // Clear status after 5 seconds
-    setTimeout(() => {
-      setStatus({ type: "idle", message: "" });
-    }, 5000);
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const containerVariants = {
@@ -291,116 +233,71 @@ export default function ContactSection() {
                 Send me a message
               </h3>
 
-              <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
-                <div className="space-y-4 sm:space-y-6 flex-1">
-                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-xs sm:text-sm font-medium text-foreground mb-2"
-                      >
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-foreground placeholder-muted-foreground text-sm sm:text-base"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-xs sm:text-sm font-medium text-foreground mb-2"
-                      >
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-foreground placeholder-muted-foreground text-sm sm:text-base"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex-1 flex flex-col">
-                    <label
-                      htmlFor="message"
-                      className="block text-xs sm:text-sm font-medium text-foreground mb-2"
+              <div className="flex-1 flex flex-col justify-center space-y-4">
+                {/* Email Display */}
+                <div className="bg-secondary/50 border border-border rounded-lg p-4 sm:p-6">
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3">
+                    Email me directly at:
+                  </p>
+                  <p className="text-lg sm:text-xl font-semibold text-foreground break-all mb-4">
+                    {email}
+                  </p>
+                  <div className="flex gap-2 flex-col sm:flex-row">
+                    <motion.button
+                      onClick={handleCopyEmail}
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-secondary hover:bg-secondary/80 border border-border rounded-lg transition-all duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      className="flex-1 w-full px-3 sm:px-4 py-2 sm:py-3 bg-secondary border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-foreground placeholder-muted-foreground resize-none min-h-[100px] sm:min-h-[120px] text-sm sm:text-base"
-                      placeholder="Tell me about your project, idea, or just say hello!"
-                    />
+                      <Copy className="h-4 w-4" />
+                      {copied ? "Copied!" : "Copy Email"}
+                    </motion.button>
+                    <motion.a
+                      href={`mailto:${email}`}
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all duration-300 font-medium"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Mail className="h-4 w-4" />
+                      Send Email
+                    </motion.a>
                   </div>
                 </div>
 
-                <div className="space-y-4 mt-6">
-                  {/* Status Message */}
-                  {status.message && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className={`p-4 rounded-lg flex items-center gap-2 ${
-                        status.type === "success"
-                          ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20"
-                          : status.type === "error"
-                          ? "bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/20"
-                          : "bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20"
-                      }`}
+                {/* Alternative Contact Methods */}
+                <div className="space-y-3">
+                  <p className="text-sm text-muted-foreground">Or reach out via:</p>
+                  <div className="flex gap-2 flex-wrap">
+                    <motion.a
+                      href="tel:+8618615745061"
+                      className="flex items-center gap-2 px-4 py-2 bg-secondary hover:bg-secondary/80 border border-border rounded-lg text-sm font-medium transition-all duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      {status.type === "success" && (
-                        <CheckCircle className="h-5 w-5" />
-                      )}
-                      {status.type === "error" && (
-                        <AlertCircle className="h-5 w-5" />
-                      )}
-                      {status.type === "loading" && (
-                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                      )}
-                      <span>{status.message}</span>
-                    </motion.div>
-                  )}
-
-                  <motion.button
-                    type="submit"
-                    disabled={status.type === "loading"}
-                    className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    whileHover={
-                      status.type !== "loading" ? { scale: 1.02 } : {}
-                    }
-                    whileTap={status.type !== "loading" ? { scale: 0.98 } : {}}
-                  >
-                    {status.type === "loading" ? (
-                      <>
-                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-5 w-5" />
-                        Send Message
-                      </>
-                    )}
-                  </motion.button>
+                      <Phone className="h-4 w-4" />
+                      Call
+                    </motion.a>
+                    <motion.a
+                      href="https://www.linkedin.com/in/shakibalhasan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-secondary hover:bg-secondary/80 border border-border rounded-lg text-sm font-medium transition-all duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Linkedin className="h-4 w-4" />
+                      LinkedIn
+                    </motion.a>
+                  </div>
                 </div>
-              </form>
+
+                {/* Quick Note */}
+                <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                  <p className="text-xs sm:text-sm text-blue-700 dark:text-blue-400">
+                    💡 <span className="font-medium">Tip:</span> Copy my email or use the direct email link above for the fastest response.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
