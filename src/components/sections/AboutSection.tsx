@@ -154,24 +154,6 @@ export default function AboutSection() {
                 <span className="text-blue-600 font-semibold">TensorFlow</span>, and various data science libraries to develop AI solutions.
               </p>
             </motion.div>
-                who has explored{" "}
-                <span className="text-blue-600 font-semibold">9 countries</span>{" "}
-                with ambitions to see the world.
-              </p>
-
-              <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                Looking ahead, I&apos;m seeking{" "}
-                <span className="text-blue-600 font-semibold">
-                  PhD opportunities
-                </span>{" "}
-                or{" "}
-                <span className="text-blue-600 font-semibold">
-                  applied research roles
-                </span>{" "}
-                in industry to continue pushing the boundaries of AI and data
-                science.
-              </p>
-            </motion.div>
 
             {/* Download CV Button - Fixed alignment */}
             <motion.div variants={itemVariants} className="mt-8 text-right">
