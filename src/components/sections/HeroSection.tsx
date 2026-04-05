@@ -17,8 +17,8 @@ import {
 export default function HeroSection() {
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/resume/SHAKIB_RESUME.pdf";
-    link.download = "SHAKIB_RESUME.pdf";
+    link.href = "/resume/resume_shakib.pdf";
+    link.download = "resume_shakib.pdf";
     link.click();
   };
 
@@ -113,34 +113,21 @@ export default function HeroSection() {
 
                 <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
                   <p>
-                    I specialize in{" "}
+                    I'm an AI and Data Science enthusiast specializing in{" "}
                     <span className="font-semibold text-blue-600">
                       Natural Language Processing
                     </span>
-                    ,{" "}
-                    <span className="font-semibold text-purple-600">
-                      Deep Learning
-                    </span>
-                    , and{" "}
-                    <span className="font-semibold text-pink-600">
-                      Transformer-Based Models
-                    </span>
-                    , with hands-on experience building intelligent systems for
-                    social media analytics and big data applications.
+                    , Deep Learning, and intelligent systems.
                   </p>
 
                   <p>
-                    I completed my Bachelor of Engineering in Software
-                    Engineering from Sichuan University, Chengdu, where I
-                    achieved a CGPA of 3.71/4.00 (88%) and earned the top
-                    overall thesis score for my work on Transformer-Based
-                    Suicidal Ideation Detection.
+                    I graduated from Sichuan University with a Bachelor of Engineering in Software Engineering.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Research Interests and Hobbies */}
+            {/* Research Interests */}
             <motion.div variants={itemVariants} className="mb-8">
               <div className="space-y-4">
                 <div>
@@ -149,21 +136,7 @@ export default function HeroSection() {
                     Research Interests
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300">
-                    Natural Language Processing, Deep Learning,
-                    Transformer-Based Models, Knowledge Graphs, Intelligent
-                    Systems
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-green-500" />
-                    Notable Achievement
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Developed a BERT-based NLP system achieving 97.63% F1-score
-                    for suicidal ideation detection, with publications under
-                    review in SIGKDD 2026 and IJITDM
+                    Natural Language Processing, Deep Learning, Transformer Models
                   </p>
                 </div>
               </div>

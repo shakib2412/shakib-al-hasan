@@ -9,10 +9,18 @@ import {
   Send,
   Github,
   Linkedin,
+  Facebook,
+  Instagram,
+  Twitter,
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+
+// Initialize EmailJS
+if (typeof window !== "undefined") {
+  emailjs.init("XgCU3bhNm2eeYbgBv");
+}
 
 const contactInfo = [
   {
@@ -50,6 +58,24 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/shakibalhasan",
     icon: Linkedin,
     color: "hover:text-blue-600",
+  },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/shakib2412/",
+    icon: Facebook,
+    color: "hover:text-blue-600",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/shaki_b24/",
+    icon: Instagram,
+    color: "hover:text-pink-600",
+  },
+  {
+    name: "X (Twitter)",
+    href: "https://x.com/HASANALSHAKIB24",
+    icon: Twitter,
+    color: "hover:text-gray-900 dark:hover:text-gray-100",
   },
 ];
 
@@ -96,7 +122,7 @@ export default function ContactSection() {
     setStatus({ type: "loading", message: "Sending message..." });
 
     try {
-      // Initialize EmailJS (you'll need to set up your own EmailJS account)
+      // Send email using EmailJS
       await emailjs.send(
         "service_5ebrshb", // Your EmailJS service ID
         "template_a2epgcl", // Your EmailJS template ID
@@ -104,8 +130,7 @@ export default function ContactSection() {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-        },
-        "XgCU3bhNm2eeYbgBv" // Your EmailJS public key
+        }
       );
 
       setStatus({
@@ -118,7 +143,7 @@ export default function ContactSection() {
       setStatus({
         type: "error",
         message:
-          "Failed to send message. Please try again or email me directly.",
+          "Failed to send message. Please email me directly at 100shakibalhasan@gmail.com",
       });
     }
 

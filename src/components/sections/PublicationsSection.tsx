@@ -19,25 +19,27 @@ import { useState } from "react";
 
 const publicationsData = [
   {
-    id: "sigkdd-2026",
+    id: "ickg-2025",
     title:
-      "Filters: Leveraging Frequency Filters for Real-World Time Series Forecasting",
-    authors: "Shakib Al Hasan et al.",
-    conference: "SIGKDD 2026 Research Track",
-    location: "Under Review",
-    year: "2026",
-    pages: "Paper #480",
-    status: "Under Review",
+      "IRDNet: Invariant and Residual Dynamic Decomposition Neural Network for Time Series Forecasting",
+    authors: "Chenyang Li, Xuanzhi Feng, Chao Li, Xuefeng Ding, Yuming Jiang, Shakib Al Hasan",
+    conference: "IEEE International Conference on Knowledge Graph (ICKG 2025)",
+    location: "Published",
+    year: "2025",
+    pages: "pp. 203-207",
+    status: "Published",
+    doi: "10.1109/ICKG66886.2025.00033",
+    link: "https://doi.org/10.1109/ICKG66886.2025.00033",
     description:
-      "A novel approach to time series forecasting that leverages frequency filters to improve prediction accuracy on real-world datasets. This research addresses the challenge of capturing complex temporal patterns in diverse time series data.",
+      "Contributed to a study on IRDNet, a deep learning model for time series forecasting. Assisted with dataset preparation, experimental evaluation, and analysis of forecasting performance across benchmark datasets.",
     abstract:
-      "Time series forecasting remains a critical challenge in machine learning, particularly when dealing with real-world data that exhibits complex temporal patterns, noise, and irregularities. This paper introduces Filters, a novel methodology that leverages frequency domain analysis and adaptive filtering techniques to enhance forecasting accuracy. By decomposing time series data into frequency components and applying selective filtering, our approach effectively isolates meaningful signals while suppressing noise. We evaluate our method across multiple benchmark datasets and demonstrate significant improvements in prediction accuracy compared to state-of-the-art baseline models. Our findings suggest that frequency-based filtering provides a robust foundation for handling diverse time series forecasting tasks in practical applications.",
+      "Due to the widespread presence of time series data across various domains, accurate time series forecasting holds significant importance. However, existing complex forecasting models are still affected by issues such as computational efficiency and information bottlenecks. This paper proposes IRDNet, a novel deep learning backbone model that introduces a method for decomposing time series based on frequency domain characteristics. IRDNet utilizes frequency-domain decomposition to separate time series into stationary and residual components, which are then modeled via distinct network paths. Through comprehensive evaluation across six datasets, IRDNet demonstrates superior performance in both accuracy and speed, outperforming state-of-the-art deep learning and statistical methods.",
     technologies: [
       "Time Series Forecasting",
-      "Frequency Analysis",
+      "Frequency Decomposition",
       "Deep Learning",
+      "Neural Networks",
       "Signal Processing",
-      "Real-World Applications",
     ],
     icon: TrendingUp,
   },
@@ -45,15 +47,16 @@ const publicationsData = [
     id: "ijitdm-2025",
     title:
       "Balancing Credit Scoring Data: A Minority Random Imputation Approach",
-    authors: "Shakib Al Hasan et al.",
+    authors: "Chenyang Li, Shakib Al Hasan, Xuanzhi Feng, Xuefeng Ding",
     conference:
       "International Journal of Information Technology & Decision Making",
-    location: "Under Review",
+    location: "Submitted",
     year: "2025",
     pages: "Full Paper",
     status: "Under Review",
+    doi: "Pending",
     description:
-      "An innovative data balancing technique for credit scoring that addresses class imbalance through minority random imputation, improving model fairness and predictive performance in financial risk assessment.",
+      "Co-authored research on handling class imbalance in credit scoring datasets using machine learning techniques. Contributed to data preprocessing, experimental evaluation, and analysis of model performance.",
     abstract:
       "Credit scoring models are essential tools in financial risk assessment, yet they often suffer from severe class imbalance where defaulting cases are significantly underrepresented. This imbalance can lead to biased predictions that favor the majority class, resulting in poor identification of high-risk borrowers. This paper proposes a Minority Random Imputation (MRI) approach that strategically generates synthetic samples for the minority class while preserving the underlying data distribution. Unlike traditional oversampling methods such as SMOTE, our approach incorporates randomization techniques that enhance diversity in generated samples and reduce overfitting risks. Through extensive experiments on real-world credit scoring datasets, we demonstrate that MRI significantly improves classification performance, particularly in minority class recall, while maintaining overall model accuracy. Our results indicate that the proposed method offers a practical and effective solution for handling imbalanced data in credit scoring applications.",
     technologies: [
@@ -179,6 +182,17 @@ export default function PublicationsSection() {
 
                     {/* Action Buttons */}
                     <div className="flex flex-wrap gap-3 mb-6">
+                      {publication.link && (
+                        <a
+                          href={publication.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors text-sm font-medium"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          View Paper
+                        </a>
+                      )}
                       <button
                         onClick={() => togglePublication(publication.id)}
                         className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
@@ -192,6 +206,18 @@ export default function PublicationsSection() {
                         )}
                       </button>
                     </div>
+
+                    {/* DOI Badge */}
+                    {publication.doi && (
+                      <div className="mb-6 text-sm">
+                        <span className="text-gray-600 dark:text-gray-400">
+                          DOI:{" "}
+                        </span>
+                        <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-gray-100 font-mono">
+                          {publication.doi}
+                        </code>
+                      </div>
+                    )}
 
                     {/* Expandable Details */}
                     {isExpanded && (

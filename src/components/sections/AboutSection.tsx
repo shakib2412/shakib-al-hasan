@@ -74,8 +74,8 @@ const skills = [
 export default function AboutSection() {
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/resume/shakib_resume.pdf";
-    link.download = "shakib_resume.pdf";
+    link.href = "/resume/resume_shakib.pdf";
+    link.download = "resume_shakib.pdf";
     link.click();
   };
 
@@ -132,82 +132,28 @@ export default function AboutSection() {
 
             <motion.div variants={itemVariants} className="space-y-6">
               <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                Data scientist and AI researcher passionate about creating
-                innovative solutions with real-world impact. My expertise spans{" "}
+                I'm interested in{" "}
                 <span className="text-blue-600 font-semibold">
-                  machine learning
+                  Artificial Intelligence
                 </span>
-                ,
+                {" "}and{" "}
                 <span className="text-blue-600 font-semibold">
-                  {" "}
-                  deep learning
+                  Data Science
                 </span>
-                , <span className="text-blue-600 font-semibold">NLP</span>, and{" "}
+                . My focus areas are{" "}
                 <span className="text-blue-600 font-semibold">
-                  large language models
+                  Natural Language Processing
                 </span>
-                , with a focus on{" "}
-                <span className="text-blue-600 font-semibold">
-                  knowledge graphs
-                </span>{" "}
-                and{" "}
-                <span className="text-blue-600 font-semibold">
-                  multimodal data
-                </span>
-                .
+                , <span className="text-blue-600 font-semibold">Deep Learning</span>, and building intelligent systems.
               </p>
 
               <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                Skilled in{" "}
+                I work with tools like{" "}
                 <span className="text-blue-600 font-semibold">Python</span>,{" "}
                 <span className="text-blue-600 font-semibold">PyTorch</span>,{" "}
-                <span className="text-blue-600 font-semibold">LangChain</span>,
-                and{" "}
-                <span className="text-blue-600 font-semibold">
-                  graph databases
-                </span>
-                , I've developed data-driven applications across{" "}
-                <span className="text-blue-600 font-semibold">healthcare</span>,{" "}
-                <span className="text-blue-600 font-semibold">e-commerce</span>,
-                and{" "}
-                <span className="text-blue-600 font-semibold">
-                  cybersecurity
-                </span>
-                .
+                <span className="text-blue-600 font-semibold">TensorFlow</span>, and various data science libraries to develop AI solutions.
               </p>
-
-              <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                My academic journey has taken me through{" "}
-                <span className="text-blue-600 font-semibold">
-                  five countries
-                </span>
-                —completing my bachelor's in{" "}
-                <span className="text-blue-600 font-semibold">China</span> and
-                pursuing an{" "}
-                <span className="text-blue-600 font-semibold">
-                  Erasmus Mundus master's
-                </span>{" "}
-                across{" "}
-                <span className="text-blue-600 font-semibold">Belgium</span>,{" "}
-                <span className="text-blue-600 font-semibold">Spain</span>, and{" "}
-                <span className="text-blue-600 font-semibold">France</span>.
-                This multicultural experience, supported by prestigious
-                scholarships, has shaped my collaborative approach to
-                problem-solving and given me fluency in multiple languages (
-                <span className="text-blue-600 font-semibold">English C1</span>,{" "}
-                <span className="text-blue-600 font-semibold">Chinese B2</span>,{" "}
-                <span className="text-blue-600 font-semibold">French A1</span>).
-              </p>
-
-              <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                Outside work, I&apos;m an avid{" "}
-                <span className="text-blue-600 font-semibold">cyclist</span>{" "}
-                (completed the 100km Chengdu Tianfu Greenway),{" "}
-                <span className="text-blue-600 font-semibold">
-                  tennis player
-                </span>
-                , and{" "}
-                <span className="text-blue-600 font-semibold">traveler</span>{" "}
+            </motion.div>
                 who has explored{" "}
                 <span className="text-blue-600 font-semibold">9 countries</span>{" "}
                 with ambitions to see the world.
