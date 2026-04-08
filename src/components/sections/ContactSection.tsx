@@ -111,9 +111,9 @@ export default function ContactSection() {
           viewport={{ once: true }}
         >
           <h2 className="heading-lg text-foreground mb-4">Get in touch</h2>
-          <span className="text-muted-foreground">
-            Do you have a project in your mind, contact me here
-          </span>
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+            Have a project in mind or want to collaborate? Let&apos;s connect.
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 lg:items-stretch">

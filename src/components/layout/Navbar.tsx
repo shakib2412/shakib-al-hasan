@@ -8,16 +8,19 @@ import { useTheme } from "next-themes";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, setTheme } = useTheme(); // Use setTheme instead of toggleTheme
-  const [mounted, setMounted] = useState(false); // Add this state
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true); // Set mounted to true after component mounts
+    setMounted(true);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -64,6 +67,11 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Scroll progress bar */}
+      <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-100 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -82,62 +90,28 @@ export default function Navbar() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            <motion.button
-              onClick={() => scrollToSection("about")}
-              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
-              whileHover={{ y: -2 }}
-            >
-              About
-            </motion.button>
-            <span className="text-primary text-lg font-bold">•</span>
-            <motion.button
-              onClick={() => scrollToSection("skills")}
-              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
-              whileHover={{ y: -2 }}
-            >
-              Skills
-            </motion.button>
-            <span className="text-primary text-lg font-bold">•</span>
-            <motion.button
-              onClick={() => scrollToSection("education")}
-              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
-              whileHover={{ y: -2 }}
-            >
-              Education
-            </motion.button>
-            <span className="text-primary text-lg font-bold">•</span>
-            <motion.button
-              onClick={() => scrollToSection("experience")}
-              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
-              whileHover={{ y: -2 }}
-            >
-              Experience
-            </motion.button>
-            <span className="text-primary text-lg font-bold">•</span>
-            <motion.button
-              onClick={() => scrollToSection("publications")}
-              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
-              whileHover={{ y: -2 }}
-            >
-              Publications
-            </motion.button>
-            <span className="text-primary text-lg font-bold">•</span>
-            <motion.button
-              onClick={() => scrollToSection("projects")}
-              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
-              whileHover={{ y: -2 }}
-            >
-              Projects
-            </motion.button>
-            <span className="text-primary text-lg font-bold">•</span>
-            <motion.button
-              onClick={() => scrollToSection("contact")}
-              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
-              whileHover={{ y: -2 }}
-            >
-              Contact
-            </motion.button>
+          <div className="hidden lg:flex items-center gap-6">
+            {[
+              { id: "education", label: "Education" },
+              { id: "experience", label: "Experience" },
+              { id: "publications", label: "Research" },
+              { id: "projects", label: "Projects" },
+              { id: "skills", label: "Skills" },
+              { id: "contact", label: "Contact" },
+            ].map((item, i, arr) => (
+              <div key={item.id} className="flex items-center gap-6">
+                <motion.button
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-sm text-foreground hover:text-primary transition-colors duration-300 font-semibold"
+                  whileHover={{ y: -2 }}
+                >
+                  {item.label}
+                </motion.button>
+                {i < arr.length - 1 && (
+                  <span className="text-border text-xs">|</span>
+                )}
+              </div>
+            ))}
           </div>
 
           {/* Right Side Actions */}
@@ -194,56 +168,24 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="container mx-auto px-4 py-6 space-y-4">
-              <motion.button
-                onClick={() => scrollToSection("about")}
-                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
-                whileHover={{ x: 8 }}
-              >
-                About
-              </motion.button>
-              <motion.button
-                onClick={() => scrollToSection("skills")}
-                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
-                whileHover={{ x: 8 }}
-              >
-                Skills
-              </motion.button>
-              <motion.button
-                onClick={() => scrollToSection("education")}
-                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
-                whileHover={{ x: 8 }}
-              >
-                Education
-              </motion.button>
-              <motion.button
-                onClick={() => scrollToSection("experience")}
-                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
-                whileHover={{ x: 8 }}
-              >
-                Experience
-              </motion.button>
-              <motion.button
-                onClick={() => scrollToSection("publications")}
-                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
-                whileHover={{ x: 8 }}
-              >
-                Publications
-              </motion.button>
-              <motion.button
-                onClick={() => scrollToSection("projects")}
-                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
-                whileHover={{ x: 8 }}
-              >
-                Projects
-              </motion.button>
-              <motion.button
-                onClick={() => scrollToSection("contact")}
-                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
-                whileHover={{ x: 8 }}
-              >
-                Contact
-              </motion.button>
+            <div className="container mx-auto px-4 py-6 space-y-1">
+              {[
+                { id: "education", label: "Education" },
+                { id: "experience", label: "Experience" },
+                { id: "publications", label: "Research" },
+                { id: "projects", label: "Projects" },
+                { id: "skills", label: "Skills" },
+                { id: "contact", label: "Contact" },
+              ].map((item) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-secondary rounded-lg transition-all duration-200 font-medium"
+                  whileHover={{ x: 6 }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
 
               {/* Mobile Download CV Button */}
               <motion.button
