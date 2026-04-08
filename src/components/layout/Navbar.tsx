@@ -92,6 +92,14 @@ export default function Navbar() {
             </motion.button>
             <span className="text-primary text-lg font-bold">•</span>
             <motion.button
+              onClick={() => scrollToSection("skills")}
+              className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
+              whileHover={{ y: -2 }}
+            >
+              Skills
+            </motion.button>
+            <span className="text-primary text-lg font-bold">•</span>
+            <motion.button
               onClick={() => scrollToSection("education")}
               className="nav-link text-foreground hover:text-primary transition-colors duration-300 font-bold"
               whileHover={{ y: -2 }}
@@ -193,6 +201,13 @@ export default function Navbar() {
                 whileHover={{ x: 8 }}
               >
                 About
+              </motion.button>
+              <motion.button
+                onClick={() => scrollToSection("skills")}
+                className="block w-full text-left py-3 px-4 text-foreground hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
+                whileHover={{ x: 8 }}
+              >
+                Skills
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection("education")}

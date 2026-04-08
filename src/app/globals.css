@@ -26,8 +26,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.75rem;
-    
-    /* Custom variables */
+
     --font-inter: 'Inter', sans-serif;
     --font-space-grotesk: 'Space Grotesk', sans-serif;
     --font-fira-code: 'Fira Code', monospace;
@@ -54,9 +53,7 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 94.1%;
   }
-}
 
-@layer base {
   *,
   *::before,
   *::after {
@@ -65,7 +62,7 @@
     border-style: solid;
     border-color: hsl(var(--border));
   }
-  
+
   html {
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
@@ -74,19 +71,14 @@
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-feature-settings: normal;
     font-variation-settings: normal;
+    scroll-behavior: smooth;
   }
-  
+
   body {
     margin: 0;
     line-height: inherit;
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    /* Performance optimizations */
-    will-change: scroll-position;
   }
 
   /* Custom scrollbar */
@@ -106,12 +98,10 @@
     @apply bg-muted-foreground/50;
   }
 
-  /* Selection styles */
   ::selection {
     @apply bg-primary/20;
   }
 
-  /* Focus styles */
   :focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
@@ -140,18 +130,12 @@
   }
 
   @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
-  /* Hover effects */
+  /* Hover lift effect */
   .hover-lift {
     @apply transition-all duration-300 ease-out;
     will-change: transform, box-shadow;
@@ -198,7 +182,7 @@
     @apply text-2xl md:text-3xl font-semibold font-heading tracking-tight;
   }
 
-  /* Animations */
+  /* Animation utility classes */
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }
@@ -212,17 +196,11 @@
   }
 
   @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Loading states */
+  /* Loading shimmer */
   .loading-shimmer {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;
@@ -235,12 +213,8 @@
   }
 
   @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
 }
 
@@ -250,29 +224,7 @@
   }
 }
 
-/* Custom scrollbar for better UX */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-800;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
-}
-
-/* Smooth transitions for all interactive elements */
-* {
-  @apply transition-colors duration-200;
-}
-
-/* Better focus states for accessibility */
+/* Focus states for interactive elements */
 button:focus-visible,
 a:focus-visible {
   @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
@@ -283,72 +235,32 @@ a:focus-visible {
   .container {
     @apply px-4;
   }
-  
-  /* Ensure proper spacing on mobile */
+
   section {
     @apply py-16;
   }
-  
-  /* Better mobile typography */
-  h1, h2, h3 {
-    @apply text-center;
-  }
-  
-  /* Mobile-optimized grid layouts */
+
   .grid {
     @apply gap-6;
   }
 }
 
-/* Improved dark mode transitions */
-[data-theme="dark"] *,
-[data-theme="light"] * {
-  @apply transition-colors duration-300;
+/* Disable heavy animations on low-end mobile */
+@media (max-width: 640px) {
+  .floating-animation {
+    animation: none !important;
+  }
+
+  .profile-image {
+    transform: none !important;
+  }
 }
 
-/* Optimize animations */
-* {
-  @apply transition-colors duration-200;
-}
-
-/* Reduce motion for users who prefer it */
+/* Respect user's reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* Optimize card animations */
-.card-modern {
-  @apply bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all duration-200; /* Reduced from 300ms */
-  will-change: transform, box-shadow;
-}
-
-/* Optimize button animations */
-.btn-primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-medium transition-all duration-150 hover:scale-105 active:scale-95; /* Reduced from 200ms */
-  will-change: transform;
-}
-
-/* Optimize hover effects */
-.hover-lift {
-  @apply transition-all duration-200 ease-out; /* Reduced from 300ms */
-  will-change: transform, box-shadow;
-}
-
-.hover-lift:hover {
-  @apply -translate-y-1 shadow-lg;
-}
-
-/* Reduce animation complexity on mobile */
-@media (max-width: 640px) {
-  .floating-animation {
-    animation: none !important;
-  }
-  
-  .profile-image {
-    transform: none !important;
   }
 }

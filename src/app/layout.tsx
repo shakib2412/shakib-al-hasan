@@ -56,7 +56,7 @@ export const metadata: Metadata = {
       "Explore the portfolio of SHAKIB AL HASAN, featuring projects and research in AI and data science.",
     images: [
       {
-        url: "/images/profile_picture.png",
+        url: "/images/profile_picture.jpeg",
         width: 1200,
         height: 630,
         alt: "SHAKIB AL HASAN - AI & Data Science",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "SHAKIB AL HASAN | AI & Data Science",
     description:
       "Explore the portfolio of SHAKIB AL HASAN, featuring projects and research in AI and data science.",
-    images: ["/images/profile_picture.png"],
+    images: ["/images/profile_picture.jpeg"],
   },
   robots: {
     index: true,
@@ -81,9 +81,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
 };
 
 export default function RootLayout({
@@ -94,7 +91,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/favicon.png" />
         <meta name="theme-color" content="#3b82f6" />
         <meta name="color-scheme" content="light dark" />
       </head>

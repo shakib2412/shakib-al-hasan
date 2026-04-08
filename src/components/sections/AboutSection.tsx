@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  Download,
   Code,
   Brain,
   Database,
@@ -72,21 +71,6 @@ const skills = [
 ];
 
 export default function AboutSection() {
-  const handleDownloadCV = () => {
-    try {
-      const link = document.createElement("a");
-      link.href = "/resume/resume_shakib.pdf";
-      link.download = "resume_shakib.pdf";
-      link.style.display = "none";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch {
-      // Fallback: open in new tab
-      window.open("/resume/resume_shakib.pdf", "_blank");
-    }
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -109,7 +93,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-20 lg:py-32 bg-secondary/10">
+    <section id="skills" className="py-20 lg:py-32 bg-secondary/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -119,67 +103,11 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="heading-lg text-foreground mb-4">About Me</h2>
+          <h2 className="heading-lg text-foreground mb-4">Skills</h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-1 gap-8 lg:gap-12 xl:gap-16 items-stretch">
-          {/* About Info Card */}
-          <motion.div
-            className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                <Brain className="h-8 w-8 text-blue-600" />
-                Introduction
-              </h3>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="space-y-6">
-              <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                I&apos;m interested in{" "}
-                <span className="text-blue-600 font-semibold">
-                  Artificial Intelligence
-                </span>
-                {" "}and{" "}
-                <span className="text-blue-600 font-semibold">
-                  Data Science
-                </span>
-                . My focus areas are{" "}
-                <span className="text-blue-600 font-semibold">
-                  Natural Language Processing
-                </span>
-                , <span className="text-blue-600 font-semibold">Deep Learning</span>, and building intelligent systems.
-              </p>
-
-              <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                I work with tools like{" "}
-                <span className="text-blue-600 font-semibold">Python</span>,{" "}
-                <span className="text-blue-600 font-semibold">PyTorch</span>,{" "}
-                <span className="text-blue-600 font-semibold">TensorFlow</span>, and various data science libraries to develop AI solutions.
-              </p>
-            </motion.div>
-
-            {/* Download CV Button - Fixed alignment */}
-            <motion.div variants={itemVariants} className="mt-8 text-right">
-              <motion.button
-                onClick={handleDownloadCV}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Download className="h-5 w-5" />
-                Download CV
-              </motion.button>
-            </motion.div>
-          </motion.div>
-
-          {/* Skills Card - Now below the introduction */}
-          <motion.div
-            className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+        <motion.div
+            className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -188,7 +116,7 @@ export default function AboutSection() {
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                 <Zap className="h-8 w-8 text-blue-600" />
-                Skills
+                Technical Skills
               </h3>
             </motion.div>
 
@@ -374,7 +302,6 @@ export default function AboutSection() {
               </div>
             </motion.div>
           </motion.div>
-        </div>
       </div>
     </section>
   );

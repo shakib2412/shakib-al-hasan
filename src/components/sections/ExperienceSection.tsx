@@ -18,6 +18,7 @@ import {
 const experienceData = [
   {
     id: "scu_research",
+    type: "research" as const,
     company: "Computer Information Integration and Systems Laboratory",
     position: "University Research Support Worker",
     period: "Sep 2024 – Sep 2025",
@@ -51,6 +52,7 @@ const experienceData = [
   },
   {
     id: "suncape",
+    type: "industry" as const,
     company: "Chengdu Suncaper Data Co., Ltd.",
     position: "Data Engineer Intern",
     period: "Mar 2024 – Jul 2024",
@@ -146,7 +148,7 @@ export default function ExperienceSection() {
                           {experience.company}
                         </h2>
                         <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-3">
-                          {experience.id === "suncape" ? (
+                          {experience.type === "industry" ? (
                             <Briefcase className="h-5 w-5 text-green-500" />
                           ) : (
                             <Microscope className="h-5 w-5 text-green-500" />
@@ -158,12 +160,12 @@ export default function ExperienceSection() {
                         <div className="mb-3">
                           <span
                             className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${
-                              experience.id === "suncape"
+                              experience.type === "industry"
                                 ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
                                 : "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200"
                             }`}
                           >
-                            {experience.id === "suncape" ? (
+                            {experience.type === "industry" ? (
                               <>
                                 <Briefcase className="h-3 w-3" />
                                 Industry

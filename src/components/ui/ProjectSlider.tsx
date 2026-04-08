@@ -38,22 +38,26 @@ interface ProjectSliderProps {
   projects: Project[];
 }
 
+// Defined outside component to prevent remounting on every parent render
+function IconBadge({
+  Icon,
+  color,
+}: {
+  Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  color: string;
+}) {
+  const gradient =
+    color && color.trim().length > 0 ? color : "from-slate-600 to-slate-800";
+  return (
+    <div
+      className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${gradient} p-3 md:p-4 shadow-lg overflow-hidden`}
+    >
+      <Icon className="w-full h-full text-white" strokeWidth={2} />
+    </div>
+  );
+}
+
 export default function ProjectSlider({ projects }: ProjectSliderProps) {
-  // Consistent icon tile used for every project
-  const IconBadge: React.FC<{
-    Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-    color: string;
-  }> = ({ Icon, color }) => {
-    const gradient =
-      color && color.trim().length > 0 ? color : "from-slate-600 to-slate-800";
-    return (
-      <div
-        className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${gradient} p-3 md:p-4 shadow-lg overflow-hidden`}
-      >
-        <Icon className="w-full h-full text-white" strokeWidth={2} />
-      </div>
-    );
-  };
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -121,7 +125,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
 
     const timer = setInterval(() => {
       paginate(1);
-    }, 5000); // 15 seconds - good balance for reading
+    }, 5000); // 5 seconds per slide
 
     return () => clearInterval(timer);
   }, [paginate, isPaused]);
